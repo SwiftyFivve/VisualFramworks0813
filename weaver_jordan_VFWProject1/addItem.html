@@ -5,14 +5,14 @@
 <html>
 
 	<head>
-		<meta charset="utf-8" />
-        <meta name="description" content = "An Application for helping people reach their goals."  />
+		<meta charset = "utf-8" />
+        <meta name = "description" content = "An Application for helping people reach 				their goals."  />
         <meta name="keywords" content="My Goals, Personal Goal Setter, Goal Application" />
         <meta name="robots" content="noindex,nofollow" />
         <meta name="viewport" content="user-scalable=no, width=device-width" />
         <meta name="viewport" content="target-densitydpi-device-dpi" />
-        <meta name="HandheldFriendly" content="True"
-        <meta name="MobileOptimized" content="320" />
+        <!-- <meta name="HandheldFriendly" content="True"
+        <meta name="MobileOptimized" content="320" /> -->
 	<title>My Goals</title>
 	<link href="../../css/styles.css" rel="stylesheet" type="text/css" />
 	<script src="../../js/main.js" type="text/javascript"></script>
@@ -28,16 +28,42 @@
             <li><a href="#">Goals</a></li>
             <li><a href="#">Settings</a></li>
     	</ul>
-    </header>
-   
-   Goal Text Input
-   Estimate Date of Accomplishment
-   Type of goal
-   Daily, Weekly, Monthly savings
-   Amount of saving
-   Notes
-   Add Item Button
-	
+	</header>
+		
+    <form action="#" method="post">
+    	<fieldset>
+        	<legend> Goal Information</legend>
+        	<ul>
+            	<li><label for="gname">Goal Name:</label><input type="text" id="gname" /></li>
+                <li><label for="date">Date of Achievement:</label><input type="date" id="date"/></li>
+                <li><label for="type">Type of Goal:</label>
+                		<select id="typeGoal">
+                            <option value="Personal">Personal</option>
+                            <option value="Savings">Savings</option>
+                            <option value="Workout">Workout</option>
+                            <option value="Education">Education</option>
+						</select>
+                </li>
+                
+                <!-- I'm not adding the <li> tag to each box because it makes the whole list of items look like they're together. If that's wrong let me know -->
+                <li><label for="schedule">Scheduled Goal Activity</label><br>
+					<input type="radio" value="Daily" id="daily" name="schedule"/><label for="daily">Daily</label>
+                    <input type="radio" value="Weekly" id="weekly" name="schedule"/><label for= "weekly">Weekly</label>
+                    <input type="radio" value="Monthly" id="monthly" name="schedule"/><label for= "monthly">Monthly</label>
+                </li>
+                
+                <li><label for="amount"></label><input type="range" id="amount"/>
+                </li>
+              	<li><label for="comments">Notes:</label><textarea id="comments"></textarea>
+                </li>
+                        
+         
+        	</ul>
+		
+        </fieldset>
+	</form>
+    <input type="submit" value="Submit" />
+    
 
 </body>
 </html>
