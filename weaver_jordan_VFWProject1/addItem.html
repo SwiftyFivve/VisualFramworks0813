@@ -36,7 +36,7 @@
         	<ul>
             	<li><label for="gname">Goal Name:</label><input type="text" id="gname" /></li>
                 <li><label for="date">Date of Achievement:</label><input type="date" id="date"/></li>
-                <li><label for="type">Type of Goal:</label>
+                <li><label >Type of Goal:</label>
                 		<select id="typeGoal">
                             <option value="Personal">Personal</option>
                             <option value="Savings">Savings</option>
@@ -46,7 +46,7 @@
                 </li>
                 
                 <!-- I'm not adding the <li> tag to each box because it makes the whole list of items look like they're together. If that's wrong let me know -->
-                <li><label for="schedule">Scheduled Goal Activity</label><br>
+                <li><label >Scheduled Goal Activity</label><br>
 					<input type="radio" value="Daily" id="daily" name="schedule"/><label for="daily">Daily</label>
                     <input type="radio" value="Weekly" id="weekly" name="schedule"/><label for= "weekly">Weekly</label>
                     <input type="radio" value="Monthly" id="monthly" name="schedule"/><label for= "monthly">Monthly</label>
@@ -55,15 +55,19 @@
                 <li><label for="amount"></label><input type="range" id="amount"/>
                 </li>
               	<li><label for="comments">Notes:</label><textarea id="comments"></textarea>
-                </li>
-                        
-         
+                </li>         
         	</ul>
-		
-        </fieldset>
+            
+		</fieldset>
 	</form>
-    <input type="submit" value="Submit" />
     
+    <input type="hidden" value="true" />      
+	<input type="submit" value="Submit" />
+    
+	<ul>
+    	<li><a href="#">Clear Goal</a></li>
+        <li><a href="#">Display Goals</a></li>
+    </ul>
 
 </body>
 </html>
