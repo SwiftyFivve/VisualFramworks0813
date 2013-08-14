@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* CSS Document 
+Jordan Weaver 
+Class 0813 */
+
+
+/*Main Content*/
+body{
+	background:#0C0
+}
+
+h1 {
+	margin: 25px;
+	padding: 15px;
+	border: 3px outset #C30; 
+	background:#C00;
+	color:#C90;
+	font: rockwell extra bold;
+	
+}
+
+h2{
+	font: Arial, Helvetica, sans-serif;
+}
+
+form{
+	background:#C00;
+	color: #C90;
+	border: 2px outset #C30;
+}
+
+a{outline: 1px double #FFF;
+color:#09F;
+}
+
+a:hover {color:#009; outline:none;}
