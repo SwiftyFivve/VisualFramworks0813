@@ -3,24 +3,55 @@
 	Week 2 
  	0813 	*/
 	
-// My Vars
+//DOM loaded	
+window.addEventListener("DOMContentLoaded", function(){
 
-var gname = document.getElementById("gname");
-var date = document.getElementById("date");
-var typeGoal = document.getElementById("typeGoal");
-var daily = document.getElementById("daily");
-var weekly = document.getElementById("weekly");
-var monthly = document.getElementById("monthly");
-var amount = document.getElementById("amount");
-var comments = document.getElementById("comments");
-var allVars = [gname, date, typeGoal, daily, weekly, monthly, amount, comments];
+	//getElementById Function
+	function $(x){
+		var theElement = document.getElementById(x);
+		return theElement;
+	}
+	
+	//Variable defaults
+	var goalType = ["--Choose Type--", "Personal", "Savings", "Workout","Education"];
+	
+	//set Link & Submit Click Events
+	var displayLink = $('displayLink');
+	displayLink.addEventListener("click", getData);
+	var clearLink = $('clear');
+	clearLink.addEventListener("click", clearLocal);
+	var save = $('submit');
+	save.addEventListener("click", storeData);
+	
+	
+		
+/*Var Loop
+var runLoop = function(){
+	for(i=0, j = allvars.length; i<j; i++);
+};
 
+//Value
+var getValue = function(){
+	console.log(runLoop.value);
+};
+
+setItem
 var captureData = function(){
-	localStorage.setItem("All Data", runVars);
+localStorage.setItem("GoalName", gname.value);
 }
 
-var runVars = function() {
-for (i=0, j=allVars.length; i<j; i++);
+//EventListener
+//document.addEventListener("submit", gname);
+allVars.addEventListener("click", getValue);
+
+//Key
+for(i=0, j=localStorage.length; i<j; i++){
+	var theKey = localStorage.key(i);
+	var theValue = localStorage.getItem(theKey);
+	console.log(theKey, theValue);
 }
 
-runVars.addEventListener("blur", captureData);
+var theKey = localStorage.key(getValue);
+	console.log(theKey);*/
+	
+});
