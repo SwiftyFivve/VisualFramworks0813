@@ -31,25 +31,24 @@ window.addEventListener("DOMContentLoaded", function(){
 	//radio button
 	function getSelectedRadio(){
 		var radios = document.forms[0].schedule;
-		for (var i=0; i<radios.length; i++);{
+		for (var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 				scheduleValue = radios[i].value;
-			};
-		};
-	};
+			}
+		}
+	}
 	
 	function storeData(){
 		var id			= Math.floor(Math.random()*10000001);
 		// gather formfield values, store in object
 		//object prop. contain array with the form label and input value
 		getSelectedRadio();
-		var item		= {};
-			item.group	=["Goal", $('goalForm').value];
-			item.gname	=["Goal Name", $('gname').value];
-			item.date	=["Date of Achievment", $('date').value];
-			item.typeGoal	=["Goal Type", $('typeGoal').value];
-			//item.goalActivity	=["Goal Activity", goalActivityValue];
-			item.amount	=["Amount", $('amount').value];
+		var item			= {};
+			item.gname		=["Goal Name", $('gname').value];
+			item.date		=["Date of Achievment", $('date').value];
+			item.typeGoal	=["Goal Type", $('types').value];
+			item.goalActivity	=["Goal Activity", scheduleValue];
+			item.amount		=["Amount", $('amount').value];
 			item.comments	=["Comments", $('comments').value];
 			
 			//Save Data into Local Storage:
@@ -76,7 +75,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeli.appendChild(makeSubList);
 			for(var n in obj){
 				var makeSubli = document.createElement('li');
-				makeSubli.appendChild(makeSubli);
+				makeSubList.appendChild(makeSubli);
 				var optSubText =obj[n][0]+" "+obj[n][1]
 				makeSubli.innerHTML = optSubText;
 			}
@@ -88,7 +87,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		if(localStorage.length === 0){
 			alert("There is nothing to clear.")
 		}else{
-			localStorage.clea();
+			localStorage.clear();
 			alert("All Goals are deleted");
 			window.location.reload();
 			return false;
@@ -104,42 +103,14 @@ window.addEventListener("DOMContentLoaded", function(){
 	typeGoal();
 	
 	//set Link & Submit Click Events
-	/*var displayLink = $('displayLink');
+	var displayLink = $('displayLink');
 	displayLink.addEventListener("click", getData);
 	var clearLink = $('clear');
-	clearLink.addEventListener("click", clearLocal);*/
+	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 	
 	
-		
-/*Var Loop
-var runLoop = function(){
-	for(i=0, j = allvars.length; i<j; i++);
-};
 
-//Value
-var getValue = function(){
-	console.log(runLoop.value);
-};
-
-setItem
-var captureData = function(){
-localStorage.setItem("GoalName", gname.value);
-}
-
-//EventListener
-//document.addEventListener("submit", gname);
-allVars.addEventListener("click", getValue);
-
-//Key
-for(i=0, j=localStorage.length; i<j; i++){
-	var theKey = localStorage.key(i);
-	var theValue = localStorage.getItem(theKey);
-	console.log(theKey, theValue);
-}
-
-var theKey = localStorage.key(getValue);
-	console.log(theKey);*/
 	
 });
