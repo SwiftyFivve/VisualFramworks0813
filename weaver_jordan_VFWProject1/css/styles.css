@@ -5,43 +5,48 @@ Class 0813 */
 
 
 /*Main Content*/
-body{
-	background:#0C0
-}
 
+body {
+	background:#FFE4C4;
+	}
+	
 h1 {
 	margin: 25px, 20px;
 	padding: 15px;
-	border: 3px outset #C30; 
-	background:#C00;
-	color:#C90;
+	border: 3px double #2F4F4F; 
+	background:#668B8B;
+	color:#B4CDCD;
 	font: rockwell extra bold;
 	
 }
 
-header {
+header > ul li {
 		display: inline;
 }
 
-
+form ul {margin:20px;
+}
 
 h2 {
 	font: Arial, Helvetica, sans-serif;
 	outline: dotted, #CC0;
 }
 
-
+[type], textarea {	border: 2px solid #666
+}
 
 form{
-	background:#C00;
-	color: #C90;
-	border: 2px outset #C30;
+	background:#668B8B;
+	color: black;
+	border: 2px  groove #2F4F4F;
 }
 
-a{outline: 1px double #FFF;
-color:#09F;
-}
 
+a:{color:#B2DFEE}
+a:visited{color:#35586C}
 a:hover {color:#009; outline:none;}
+a:active{color:#4372AA}
+
+
 
 overflow: {scroll;}

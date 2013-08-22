@@ -59,8 +59,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function storeData(){
-		var id			= Math.floor(Math.random()*10000001);
+	function storeData(key){
+		//If there is no key this means this is a brand new item and we need a new key
+		if(!key){
+			var id			= Math.floor(Math.random()*10000001);
+		}else{
+			id = key;
+		};
 		// gather formfield values, store in object
 		//object prop. contain array with the form label and input value
 		getSelectedRadio();
@@ -68,7 +73,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.gname			=["Goal Name", $('gname').value];
 			item.date			=["Date of Achievment", $('date').value];
 			item.typeGoal		=["Goal Type", $('types').value];
-			item.goalActivity	=["Goal Activity", scheduleValue];
+			item.schedule		=["Goal Activity", scheduleValue];
 			item.amount			=["Amount", $('amount').value];
 			item.comments		=["Comments", $('comments').value];
 			
@@ -130,7 +135,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Goal";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -164,13 +169,22 @@ window.addEventListener("DOMContentLoaded", function(){
 		save.removeEventListener("click", storeData);
 		//Change sumbit button value to edit button
 		$('submit').value = "Edit Contact";
-		var editSumbit = $('submit');
+		var editSubmit = $('submit');
 		//save the key value established in this function as a property of the editSubmit event
 		//so we can use that value when we save the data we edited.
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
 	}
 	
+	function deleteItem(){
+		var ask = confirm('Are you sure you want to delete this goal?');
+		if (ask){
+			localStorage.removeItem(this.key);	
+			window.location.reload();
+		}else{
+			alert("Goal was NOT deleted.");
+		}
+	}
 	
 	function clearLocal(){
 		if(localStorage.length === 0){
@@ -183,12 +197,58 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 	}
 	
+	function validate(e){
+		//define the elemts we want to check
+		var getGname = $('gname');
+			getDate = $('date');
+			
+			//Reset Error Messages
+			errMsg.innerHTML = "";
+			getGname.style.border = "1px solid black";
+			getDate.style.border = "1px solid black";
+			
+			//Get Error Messages
+			var messageAry = [];
+			//Goal name validation
+			if(getGname.value===""){
+				var gnameError = "Please enter a goal name.";
+				getGname.style.border = "1px solid red";
+				messageAry.push(gnameError);	
+			}
+			
+			if(getDate.value === ""){
+				var dateError = "Please choose a date.";
+				getDate.style.border = "1px solid red";
+				messageAry.push(dateError);
+				
+			}
+			
+			//If there were errors, display on screen.
+			if (messageAry.length >= 1){
+				for(var i=0, j=messageAry.length; i<j; i++){
+					var txt = document.createElement('li');
+					txt.innerHTML = messageAry[i];
+					errMsg.appendChild(txt);	
+				}
+					e.preventDefault();
+				return false;
+			}else{
+				//store data
+				//Send the key value ( which came from the editData function).
+				//Remember this key value was passed through the editSubmit event Listener as a property.
+				storeData(this.key);
+			}
+			
+		}
+	
 	
 	
 	//Variable defaults
 	var goalType = ["--Choose Type--", "Personal", "Savings", "Workout","Education"],
 	scheduleValue
+	errMsg =$('errors');
 	;
+	
 	typeGoal();
 	
 	//set Link & Submit Click Events
@@ -197,7 +257,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", validate);
 	
 	
 
