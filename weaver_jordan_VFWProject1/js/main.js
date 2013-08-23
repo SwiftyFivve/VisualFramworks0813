@@ -151,7 +151,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		//populate form fields with current LS values
 		$('gname').value = item.gname[1];
 		$('date').value = item.date[1];
-		$('typeGoal').value = item.typeGoal[1];
+		$('types').value = item.types[1];
 		var radios = document.forms[0].schedule;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].value == "Daily" && item.schedule[1] == "Daily"){
