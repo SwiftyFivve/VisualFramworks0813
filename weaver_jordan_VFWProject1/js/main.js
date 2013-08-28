@@ -86,6 +86,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function getData(){
 		toggleControls("on");
+		if(localStorage.length === 0){
+			alert("There is no data in Local Storage, so default data was added.");
+			autoFillData();
+		}
 		//LS to Browser
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
@@ -102,6 +106,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeli.appendChild(makeSubList);
+			getImage(obj.typeGoal[1], makeSubList);
 			for(var n in obj){
 				var makeSubli = document.createElement('li');
 				makeSubList.appendChild(makeSubli);
@@ -112,6 +117,26 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeItemLinks(localStorage.key(i), linksLi); // create edit/delete links
 		}
 		
+		
+	}
+	
+	//Get the image for the correct category
+	function getImage(catName, makeSubList){
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement('img');
+		var setSrc = newImg.setAttribute("src","images/" + catName + ".png")
+		imageLi.appendChild(newImg);
+	}
+	
+	
+	//Auto Populate Local Storage
+	function autoFillData(){
+		//Actual JSON OBJECT data required for this to work is coming from my json.js page from html
+		for(var n in json){
+			var id 	= Math.floor(Math.random()*10000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
 	}
 	
 	//Make Item Links
