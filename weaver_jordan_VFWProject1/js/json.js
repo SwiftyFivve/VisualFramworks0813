@@ -10,7 +10,7 @@ var json = {
 		"comments":["Other Comments", "Other Notes"]
 	},
 	"contact2": {
-		"gname": ["Goal Name:", "Education"],
+		"gname": ["Goal Name:", "Study"],
 		"date": ["Date of Achievment:", "2013-12-11"],
 		"typeGoal": ["Type of Goal:", "Education"],
 		"schedule": ["Goal Activity:", "Daily"],
